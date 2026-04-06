@@ -25,77 +25,75 @@ blah, blah, blah, blah
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
- <!DOCTYPE html>
+	
+<!DOCTYPE html>
 <html>
 <head> 
-      <title>Pearl's-Perfect-App-6</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
+    <title>Pearl's-Perfect-App-6</title>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="w3-colors-flat.css">
+	
 <script>
 var docMod = document.lastModified; // loads last modified time stamp into docMod variable
 alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
 console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
 </script>
 
+<style>    
+        body {
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
 
-<style>	
-body {
-    margin: 0;
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
+        #content {
+            padding: 20px;
+        }
 
-#content {
-    padding: 20px;
-}
+        /* Canvas styling */
+        canvas {
+            border: 2px solid black;
+            background-color: white;
+            width: 90vw;
+            max-width: 350px;
+            height: 250px;
+            display: block;
+            margin: 20px auto;
+        }
 
-/* Canvas styling */
-canvas {
-    border: 2px solid black;
-    background-color: white;
-    width: 90vw;
-    max-width: 350px;
-    height: 250px;
-    display: block;
-    margin: 20px auto;
-}
+        button {
+            width: 90%;
+            max-width: 350px;
+            margin: 10px auto;
+            display: block;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-button {
-    width: 90%;
-    max-width: 350px;
-    margin: 10px auto;
-    display: block;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-footer {
-    margin-top: 20px;
-    padding: 10px;
-}
-}
-  </style>
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
-	
+    
 <div id="header" class="w3-container w3-flat-carrot">
-	<h1>Pearl's-Perfect-App-6</h1>
+    <h1>Pearl's-Perfect-App-6</h1>
 </div>
-	
+    
 <div id="content" class="w3-container">
-		
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+    <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk.</p>
+    <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
 
- <!-- The Canvas -->
+    <!-- Canvas -->
     <canvas id="myCanvas" width="350" height="250"></canvas>
 
-<!-- Controls/the buttons -->
+    <!-- Buttons -->
     <button onclick="drawRectangle()">Draw Rectangle</button>
     <button onclick="writeName()">Write My Name</button>
     <button onclick="loadImage()">Load Image</button>
@@ -107,70 +105,66 @@ footer {
 </footer>
 
 <script>
-    // Show the modification date on load
-    const docMod = document.lastModified;
-    console.log("This file last modified: " + docMod);
-
-    // Helper function to get canvas context safely
+    // 
+    // Get canvas context helper
+    // 
     function getContext() {
         const canvas = document.getElementById("myCanvas");
         return canvas.getContext("2d");
     }
-	
-//function to draw a blue rectangle
+
+    // 
+    // Draw a blue rectangle
+    // 
     function drawRectangle() {
         const ctx = getContext();
         ctx.fillStyle = "blue";
         ctx.fillRect(40, 40, 150, 100);
     }
-	
-//function to load my name
+
+    // 
+    // Write your name in red
+    // 
     function writeName() {
         const ctx = getContext();
         ctx.font = "24px Arial";
         ctx.fillStyle = "red";
         ctx.fillText("Pearl Uguru", 70, 200);
-		
-	   }
-//function to load an image
-	function loadImage() {
-            const canvas = document.getElementById("myCanvas");
-            const ctx = getContext();
-            const img = new Image();
+    }
 
-// Function called once image loads successfully
-            img.onload = function() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-                ctx.drawImage(img, 25, 25, 300, 180);            // Draw image with width 300, height 180
-                console.log("Image loaded successfully!");
-            };
+    // 
+    // Load an image onto the canvas
+    // 
+    function loadImage() {
+        const canvas = document.getElementById("myCanvas");
+        const ctx = getContext();
+        const img = new Image();
 
-            // Function called if image fails to load
-            img.onerror = function() {
-                alert("Failed to load image. Check your URL!");
-                console.error("Could not load image at: " + img.src);
-            };
+        img.onload = function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 25, 25, 300, 180);
+            console.log("Image loaded successfully!");
+        };
 
-            img.crossOrigin = "anonymous"; // Helps with CORS for external images
-            img.src = "https://upload.wikimedia.org/wikipedia/commons/8/80/Red_Panda_in_Tree.jpg";
-        }
+        img.onerror = function() {
+            alert("Failed to load image. Check your URL!");
+            console.error("Could not load image at: " + img.src);
+        };
 
-        /* 
-           Function: clearCanvas
-           Clears all drawings and text from the canvas */
-		
-        function clearCanvas() {
-            const canvas = document.getElementById("myCanvas");
-            const ctx = canvas.getContext("2d");
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear entire canvas
-        }
+        img.crossOrigin = "anonymous";
+        img.src = "https://upload.wikimedia.org/wikipedia/commons/8/80/Red_Panda_in_Tree.jpg";
+    }
 
+    // 
+    // Clear the canvas
+    // 
+    function clearCanvas() {
+        const ctx = getContext();
+        const canvas = document.getElementById("myCanvas");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 </script>
-	
 </body>
 </html>
 
 
-<footer class="w3-bottom w3-container w3-flat-carrot">
-	<p>DIY!</p>
-</footer>
