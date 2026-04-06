@@ -42,7 +42,6 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 </script>
 
 
-
 <style>	
 .body {
      margin: 0em;
@@ -74,6 +73,79 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
 	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+ <!-- The Canvas -->
+    <canvas id="myCanvas" width="350" height="250"></canvas>
+
+<!-- Controls/the buttons -->
+    <button onclick="drawRectangle()">Draw Rectangle</button>
+    <button onclick="writeName()">Write My Name</button>
+    <button onclick="loadImage()">Load Image</button>
+    <button onclick="clearCanvas()">Clear Canvas</button>
+</div>
+
+<footer class="w3-container w3-flat-carrot">
+    <p>DIY Diagnostics</p>
+</footer>
+
+<script>
+    // Show the modification date on load
+    const docMod = document.lastModified;
+    console.log("This file last modified: " + docMod);
+
+    // Helper function to get canvas context safely
+    function getContext() {
+        const canvas = document.getElementById("myCanvas");
+        return canvas.getContext("2d");
+    }
+//function to draw a blue rectangle
+    function drawRectangle() {
+        const ctx = getContext();
+        ctx.fillStyle = "blue";
+        ctx.fillRect(40, 40, 150, 100);
+    }
+//function to load my name
+    function writeName() {
+        const ctx = getContext();
+        ctx.font = "24px Arial";
+        ctx.fillStyle = "red";
+        ctx.fillText("Pearl Uguru", 70, 200);
+	function loadImage() {
+            const canvas = document.getElementById("myCanvas");
+            const ctx = getContext();
+            const img = new Image();
+
+            // Function called once image loads successfully
+            img.onload = function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+                ctx.drawImage(img, 25, 25, 300, 180);            // Draw image with width 300, height 180
+                console.log("Image loaded successfully!");
+            };
+
+            // Function called if image fails to load
+            img.onerror = function() {
+                alert("Failed to load image. Check your URL!");
+                console.error("Could not load image at: " + img.src);
+            };
+
+            img.crossOrigin = "anonymous"; // Helps with CORS for external images
+
+
+            img.src = "https://upload.wikimedia.org/wikipedia/commons/8/80/Red_Panda_in_Tree.jpg";
+        }
+
+        /* 
+           Function: clearCanvas
+           Clears all drawings and text from the canvas */
+		
+        function clearCanvas() {
+            const canvas = document.getElementById("myCanvas");
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear entire canvas
+        }
+
+	</script>
+
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
