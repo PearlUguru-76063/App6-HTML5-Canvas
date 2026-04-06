@@ -43,22 +43,41 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 
 
 <style>	
-.body {
-     margin: 0em;
+body {
+    margin: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
-.page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
+
+#content {
+    padding: 20px;
 }
-  .page:target {
-    left: 0vw;
-    z-index: 1;
+
+/* Canvas styling */
+canvas {
+    border: 2px solid black;
+    background-color: white;
+    width: 90vw;
+    max-width: 350px;
+    height: 250px;
+    display: block;
+    margin: 20px auto;
+}
+
+button {
+    width: 90%;
+    max-width: 350px;
+    margin: 10px auto;
+    display: block;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+}
 }
 </style>
 
