@@ -117,24 +117,29 @@ footer {
         const canvas = document.getElementById("myCanvas");
         return canvas.getContext("2d");
     }
+	
 //function to draw a blue rectangle
     function drawRectangle() {
         const ctx = getContext();
         ctx.fillStyle = "blue";
         ctx.fillRect(40, 40, 150, 100);
     }
+	
 //function to load my name
     function writeName() {
         const ctx = getContext();
         ctx.font = "24px Arial";
         ctx.fillStyle = "red";
         ctx.fillText("Pearl Uguru", 70, 200);
+		
+	   }
+//function to load an image
 	function loadImage() {
             const canvas = document.getElementById("myCanvas");
             const ctx = getContext();
             const img = new Image();
 
-            // Function called once image loads successfully
+// Function called once image loads successfully
             img.onload = function() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
                 ctx.drawImage(img, 25, 25, 300, 180);            // Draw image with width 300, height 180
